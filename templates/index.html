@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英単語クイズ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>英単語クイズ</h1>
+
+        <p>第{{ question_number }}問 / {{ total_questions }}問</p>
+
+        <div class="question">
+            {{ question.word }}
+        </div>
+
+        <p>この英単語の意味は？</p>
+
+        <form action="/answer" method="post">
+
+            {% for choice in question.choices %}
+                <button class="choice" name="answer" value="{{ choice }}">
+                    {{ choice }}
+                </button>
+            {% endfor %}
+
+        </form>
+        
+    </div>
+
+</body>
+</html>
